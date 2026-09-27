@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | CivicPulse Performance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+
+    <main class="auth-card" aria-labelledby="login-title">
+        <a class="auth-brand" href="index.html">
+            <span class="brand-mark">CP</span>
+            <span>CivicPulse</span>
+        </a>
+
+        <h1 id="login-title" class="auth-heading">Welcome back</h1>
+        <p class="auth-subtitle">Sign in to manage your vehicle parts orders and appointments.</p>
+
+        <!-- Container for Auth Error Feedback -->
+        <div id="auth-error-msg" class="alert-error-box" style="display: none;"></div>
+
+        <form id="loginForm" method="post" novalidate>
+            <div class="form-group">
+                <label class="form-label" for="username">Email address or admin username</label>
+                <input
+                    class="form-control-custom"
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="driver@example.com or admin"
+                    autocomplete="username"
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <input
+                    class="form-control-custom"
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                >
+            </div>
+
+            <div class="form-options">
+                <label class="check-row" for="remember">
+                    <input type="checkbox" id="remember" name="remember">
+                    <span>Remember me</span>
+                </label>
+                <a class="text-link" href="#">Forgot password?</a>
+            </div>
+
+            <button class="auth-button" type="submit">Log in</button>
+        </form>
+
+        <p class="auth-switch">
+            Don't have an account?
+            <a href="register.html">Create an account</a>
+        </p>
+    </main>
+
+    <!-- jQuery and jQuery Validation CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // jQuery Validation initialization for Login Form
+            $('#loginForm').validate({
+                rules: {
+                    username: {
+                        required: true,
+                        minlength: 3
+                    },
+                    password: {
+                        required: true
+                    }
+                },
+                messages: {
+                    username: {
+                        required: "Please enter your username.",
+                        minlength: "Username must be at least 3 characters long."
+                    },
+                    password: {
+                        required: "Please enter your password."
+                    }
+                },
+                errorClass: "is-invalid-msg",
+                validClass: "is-valid",
+                highlight: function(element) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element) {
+                    $(element).removeClass('is-invalid');
+                },
+                submitHandler: function (form) {
+                    const username = $('#username').val().trim();
+                    const password = $('#password').val();
+
+                    let registeredUsers = [];
+                    try {
+                        registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+                        if (!Array.isArray(registeredUsers)) registeredUsers = [];
+                    } catch (error) {
+                        registeredUsers = [];
+                    }
+
+                    const registeredUser = registeredUsers.find(function (user) {
+                        return user.email.toLowerCase() === username.toLowerCase()
+                            && user.password === password;
+                    });
+                    const isAdmin = username === 'admin' && password === '12345';
+
+                    if (isAdmin || registeredUser) {
+                        const displayName = isAdmin ? 'admin' : registeredUser.name;
+                        sessionStorage.setItem('loggedUser', displayName);
+                        sessionStorage.setItem('isLoggedIn', 'true');
+                        sessionStorage.setItem('username', displayName);
+                        window.location.href = 'landing.html';
+                    } else {
+                        $('#auth-error-msg')
+                            .text("Invalid email or password. Register first if you don't have an account.")
+                            .show();
+                    }
+                    return false; // Prevent form default POST page reload
+                }
+            });
+        });
+    </script>
+</body>
+</html>

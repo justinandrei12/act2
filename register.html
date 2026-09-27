@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | CivicPulse Performance</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+
+    <main class="auth-card" aria-labelledby="register-title">
+        <a class="auth-brand" href="index.html">
+            <span class="brand-mark"><i class="bi bi-car-front"></i></span>
+            <span>Honda Civic</span>
+        </a>
+
+        <h1 id="register-title" class="auth-heading">Join CivicPulse</h1>
+        <p class="auth-subtitle">Create an account to track orders and save your Civic vehicle specs.</p>
+
+        <!-- Feedback Messages -->
+        <div id="register-success-msg" class="alert-success-box" style="display: none;"></div>
+
+        <form id="registerForm" method="post" novalidate>
+            <div class="form-group">
+                <label class="form-label" for="full-name">Full name</label>
+                <input
+                    class="form-control-custom"
+                    type="text"
+                    id="full-name"
+                    name="full_name"
+                    placeholder="Juan Dela Cruz"
+                    autocomplete="name"
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="register-email">Email address</label>
+                <input
+                    class="form-control-custom"
+                    type="email"
+                    id="register-email"
+                    name="email"
+                    placeholder="driver@example.com"
+                    autocomplete="email"
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="register-password">Password</label>
+                <input
+                    class="form-control-custom"
+                    type="password"
+                    id="register-password"
+                    name="password"
+                    placeholder="Create a password"
+                    autocomplete="new-password"
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="confirm-password">Confirm password</label>
+                <input
+                    class="form-control-custom"
+                    type="password"
+                    id="confirm-password"
+                    name="confirm_password"
+                    placeholder="Re-enter your password"
+                    autocomplete="new-password"
+                >
+            </div>
+
+            <button class="auth-button" type="submit">Create account</button>
+        </form>
+
+        <p class="auth-switch">
+            Already have an account?
+            <a href="login.html">Log in here</a>
+        </p>
+    </main>
+
+    <!-- jQuery and jQuery Validation CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Validation Rules & User-Friendly Messages
+            $('#registerForm').validate({
+                rules: {
+                    full_name: {
+                        required: true,
+                        minlength: 2
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 8
+                    },
+                    confirm_password: {
+                        required: true,
+                        equalTo: "#register-password"
+                    }
+                },
+                messages: {
+                    full_name: {
+                        required: "Please enter your full name.",
+                        minlength: "Name must be at least 2 characters long."
+                    },
+                    email: {
+                        required: "Please enter your email address.",
+                        email: "Please enter a valid email address (e.g., name@example.com)."
+                    },
+                    password: {
+                        required: "Please provide a password.",
+                        minlength: "Password must be at least 8 characters long."
+                    },
+                    confirm_password: {
+                        required: "Please confirm your password.",
+                        equalTo: "Passwords do not match. Please re-check."
+                    }
+                },
+                errorClass: "is-invalid-msg",
+                highlight: function(element) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element) {
+                    $(element).removeClass('is-invalid');
+                },
+                submitHandler: function (form) {
+                    const email = $('#register-email').val().trim();
+                    const password = $('#register-password').val();
+                    let registeredUsers = [];
+
+                    try {
+                        registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+                        if (!Array.isArray(registeredUsers)) registeredUsers = [];
+                    } catch (error) {
+                        registeredUsers = [];
+                    }
+
+                    const emailExists = registeredUsers.some(function (user) {
+                        return user.email.toLowerCase() === email.toLowerCase();
+                    });
+
+                    if (emailExists) {
+                        $('#register-success-msg')
+                            .text('An account with this email already exists. Please log in instead.')
+                            .fadeIn();
+                        return false;
+                    }
+
+                    registeredUsers.push({
+                        name: $('#full-name').val().trim(),
+                        email: email,
+                        password: password
+                    });
+                    localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+
+                    $('#register-success-msg')
+                        .text("Account created successfully! Redirecting to login...")
+                        .fadeIn();
+
+                    // Optional redirect after short delay
+                    setTimeout(function() {
+                        window.location.href = 'login.html';
+                    }, 2000);
+
+                    form.reset();
+                    return false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
