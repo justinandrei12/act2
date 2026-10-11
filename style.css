@@ -1,0 +1,705 @@
+/* =========================================================
+   CivicPulse Performance - Honda Civic Parts & Shop
+   Custom Styling & Theme Overrides with Car Backgrounds
+   ========================================================= */
+
+:root {
+    --primary: #dc2626;
+    --primary-dark: #b91c1c;
+    --secondary: #2563eb;
+    --accent: #ef4444;
+    --dark: #0f172a;
+    --dark-soft: #1e293b;
+    --text: #334155;
+    --muted: #64748b;
+    --light: #f8fafc;
+    --white: #ffffff;
+    --border: #dbe3ef;
+    --shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+    --radius: 18px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background: var(--light);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* =========================================
+   Activity 1: Login & Register Pages
+   Full-screen Honda Civic Background
+   ========================================= */
+
+.auth-page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 32px 16px;
+    /* Full-screen Honda Civic background with dark gradient overlay */
+    background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(185, 28, 28, 0.75) 100%),
+        url("https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat fixed;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.auth-card {
+    width: min(100%, 470px);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 24px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    padding: 38px;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(12px);
+}
+
+.auth-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 800;
+    font-size: 1.15rem;
+    margin-bottom: 28px;
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--dark));
+    box-shadow: 0 10px 22px rgba(220, 38, 38, 0.25);
+}
+
+.auth-heading {
+    margin: 0 0 8px;
+    color: var(--dark);
+    font-size: clamp(1.7rem, 5vw, 2.2rem);
+    line-height: 1.2;
+}
+
+.auth-subtitle {
+    margin: 0 0 26px;
+    color: var(--muted);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--dark-soft);
+    font-size: 0.94rem;
+    font-weight: 700;
+}
+
+.form-control-custom {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--dark);
+    font: inherit;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.form-control-custom::placeholder {
+    color: #94a3b8;
+}
+
+.form-control-custom:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.12);
+}
+
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 4px 0 20px;
+    font-size: 0.9rem;
+}
+
+.check-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+}
+
+.check-row input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
+}
+
+.text-link {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+.auth-button {
+    width: 100%;
+    min-height: 50px;
+    border: 0;
+    border-radius: 12px;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 10px 22px rgba(220, 38, 38, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(220, 38, 38, 0.32);
+}
+
+.auth-button:focus-visible,
+.text-link:focus-visible,
+.auth-brand:focus-visible {
+    outline: 3px solid rgba(220, 38, 38, 0.45);
+    outline-offset: 3px;
+}
+
+.auth-switch {
+    margin: 22px 0 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.93rem;
+}
+
+.auth-switch a {
+    color: var(--primary);
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.password-note {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+/* =========================================
+   Activity 2: Landing Page
+   Honda Civic Hero Section Background
+   ========================================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(219, 227, 239, 0.8);
+    backdrop-filter: blur(12px);
+}
+
+.brand-logo {
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: var(--dark);
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.brand-logo span {
+    color: var(--primary);
+}
+
+.nav-link {
+    font-weight: 600;
+}
+
+.hero-section {
+    min-height: 720px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    /* Honda Civic background image with gradient overlay */
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.35) 100%),
+        url("https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(220, 38, 38, 0.10);
+    color: var(--primary-dark);
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    max-width: 760px;
+    margin: 18px 0;
+    color: var(--dark);
+    font-size: clamp(2.6rem, 6vw, 5.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+    font-weight: 900;
+}
+
+.hero-title span {
+    background: linear-gradient(90deg, var(--primary), #ef4444, var(--dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-description {
+    max-width: 650px;
+    margin-bottom: 28px;
+    color: var(--dark-soft);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.btn-brand {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--primary);
+    --bs-btn-border-color: var(--primary);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--primary-dark);
+    --bs-btn-hover-border-color: var(--primary-dark);
+    font-weight: 800;
+    border-radius: 12px;
+    padding: 12px 20px;
+}
+
+.btn-outline-brand {
+    border: 1px solid var(--border);
+    color: var(--dark);
+    background: rgba(255, 255, 255, 0.85);
+    font-weight: 800;
+    border-radius: 12px;
+    padding: 12px 20px;
+}
+
+.btn-outline-brand:hover {
+    border-color: #b9c8dd;
+    background: white;
+}
+
+.hero-visual {
+    position: relative;
+    min-height: 440px;
+    display: grid;
+    place-items: center;
+}
+
+.dashboard-window {
+    width: min(100%, 470px);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 26px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 30px 70px rgba(15, 23, 42, 0.2);
+    backdrop-filter: blur(14px);
+    transform: rotate(2deg);
+}
+
+.window-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.window-bar span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #cbd5e1;
+}
+
+.dashboard-inner {
+    padding: 22px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+}
+
+.mini-label {
+    color: #94a3b8;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.dashboard-number {
+    margin: 4px 0 18px;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary);
+}
+
+.chart {
+    height: 145px;
+    display: flex;
+    align-items: end;
+    gap: 10px;
+    padding-top: 20px;
+}
+
+.chart span {
+    flex: 1;
+    border-radius: 8px 8px 3px 3px;
+    background: linear-gradient(to top, var(--primary), #ef4444);
+}
+
+.stat-chip {
+    position: absolute;
+    padding: 13px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.15);
+    color: var(--dark);
+    font-weight: 800;
+    backdrop-filter: blur(10px);
+}
+
+.stat-chip small {
+    display: block;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.chip-one {
+    left: 0;
+    bottom: 45px;
+}
+
+.chip-two {
+    right: 0;
+    top: 48px;
+}
+
+.section-padding {
+    padding: 90px 0;
+}
+
+.section-kicker {
+    color: var(--primary);
+    font-size: 0.82rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.section-title {
+    margin-top: 8px;
+    margin-bottom: 14px;
+    color: var(--dark);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.08;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+}
+
+.section-description {
+    max-width: 690px;
+    color: var(--muted);
+}
+
+.feature-card,
+.service-card {
+    height: 100%;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: white;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.feature-card:hover,
+.service-card:hover {
+    transform: translateY(-7px);
+    border-color: #fca5a5;
+    box-shadow: 0 20px 45px rgba(220, 38, 38, 0.08);
+}
+
+.icon-box {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background: #fef2f2;
+    color: var(--primary);
+    font-size: 1.35rem;
+    font-weight: bold;
+}
+
+.feature-card h3,
+.service-card h3 {
+    color: var(--dark);
+    font-size: 1.2rem;
+    font-weight: 850;
+}
+
+.feature-card p,
+.service-card p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.services-section {
+    background: #f8fafc;
+}
+
+.service-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    right: -60px;
+    bottom: -65px;
+    border-radius: 50%;
+    background: rgba(220, 38, 38, 0.05);
+}
+
+.price {
+    margin: 20px 0;
+    color: var(--dark);
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.price small {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+}
+
+.service-list li {
+    margin-bottom: 9px;
+    color: var(--text);
+}
+
+.service-list li::before {
+    content: "✓";
+    margin-right: 9px;
+    color: var(--primary);
+    font-weight: 900;
+}
+
+.cta-section {
+    padding: 90px 0;
+}
+
+.cta-box {
+    position: relative;
+    overflow: hidden;
+    padding: 55px;
+    border-radius: 28px;
+    color: white;
+    /* Honda Civic CTA Card Background Image */
+    background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(153, 27, 27, 0.85) 100%),
+        url("https://images.unsplash.com/photo-1541348263662-e082662d82da?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+    box-shadow: 0 25px 55px rgba(15, 23, 42, 0.18);
+}
+
+.cta-box h2 {
+    position: relative;
+    z-index: 1;
+    font-weight: 900;
+    letter-spacing: -0.035em;
+}
+
+.cta-box p {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+    color: #cbd5e1;
+}
+
+.site-footer {
+    padding: 34px 0;
+    background: #0b1120;
+    color: #94a3b8;
+}
+
+.site-footer a {
+    color: #e2e8f0;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: white;
+}
+
+.footer-brand {
+    color: white;
+    font-weight: 900;
+}
+
+/* Responsive Overrides */
+@media (max-width: 991.98px) {
+    .hero-section {
+        min-height: auto;
+        padding: 80px 0;
+        background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.8) 100%),
+            url("https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat;
+    }
+
+    .hero-visual {
+        min-height: 390px;
+        margin-top: 25px;
+    }
+
+    .chip-one { left: 4%; }
+    .chip-two { right: 4%; }
+}
+
+@media (max-width: 767.98px) {
+    .auth-card {
+        padding: 28px 22px;
+        border-radius: 20px;
+    }
+
+    .form-options {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .hero-title {
+        font-size: clamp(2.55rem, 13vw, 4rem);
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .dashboard-window {
+        transform: none;
+    }
+
+    .stat-chip {
+        padding: 10px 12px;
+        font-size: 0.88rem;
+    }
+
+    .chip-one { left: 0; bottom: 15px; }
+    .chip-two { right: 0; top: 15px; }
+
+    .section-padding,
+    .cta-section {
+        padding: 65px 0;
+    }
+
+    .cta-box {
+        padding: 36px 25px;
+        border-radius: 22px;
+    }
+   /* =========================================
+   jQuery Validation & Feedback Styles
+   ========================================= */
+
+.form-control-custom.is-invalid {
+    border-color: #dc2626 !important;
+    background-color: #fef2f2 !important;
+}
+
+label.is-invalid-msg {
+    color: #dc2626;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-top: 5px;
+    display: block;
+}
+
+.alert-error-box {
+    background-color: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.alert-success-box {
+    background-color: #f0fdf4;
+    border: 1px solid #86efac;
+    color: #166534;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+    text-align: center;
+}
+}
